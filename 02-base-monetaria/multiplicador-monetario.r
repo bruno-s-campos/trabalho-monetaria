@@ -106,15 +106,22 @@ multiplicador_df$K = 1 / (multiplicador_df$C + (multiplicador_df$D * (multiplica
 # Calcular PMPP / DV, para também plotar no gráfico
 multiplicador_df$PMPP_DV = multiplicador_df$PMPP_MEDIA / multiplicador_df$DV_MEDIA
 
+# Data de lançamento oficial do Pix
+lancamento_pix = as.Date("2020-11-16")
+
 # Gráfico do multiplicador monetário junto com alguns indicadores monetários
 df_grafico = multiplicador_df %>%
     pivot_longer(cols=c(K, R1, R2, PMPP_DV), names_to="Variavel", values_to="Valor")
 
 ggplot(df_grafico, aes(x=Data, y=Valor, color=Variavel)) +
     geom_line() +
-    geom_hline(yintercept=1, linetype="dashed", color="black") +
+    geom_hline(yintercept=1, linetype="solid", color="black") +
+    geom_vline(xintercept=lancamento_pix, linetype="dotted", color="black", linewidth=0.5) +
     scale_x_date(date_breaks="2 years", date_labels="%Y") +
     scale_y_continuous(breaks=seq(0, max(df_grafico$Valor), by=0.2)) +
     labs(x="Ano", y="Razão", title="Indicadores monetários no Brasil entre Dez-2001 e Jan-2025") +
     theme_minimal() +
     theme(legend.title=element_blank(), plot.title=element_text(hjust=0.5))
+
+# Mostra estatística descritiva do multiplicador monetário
+summary(multiplicador_df$K)
