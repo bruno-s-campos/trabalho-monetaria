@@ -25,29 +25,43 @@ O script utiliza as seguintes bibliotecas:
    ```bash
    python -m venv venv
    venv\Scripts\activate
+   ```
 
-  No **MacOS/Linus
-  python -m venv venv
-  source vend/bin/activate
+   No **MacOS/Linus**:
+   ```
+   python -m venv venv
+   source venv/bin/activate
+   ```
 
-3. **Instalar os pacotes necessários**
-   No terminal, execute o seguinte comando: 
-  
+3. **Instalar os pacotes necessários**: no terminal, execute o seguinte comando: 
+   ```
    pip install pandas matplotlib
+   ```
 
 ## ▶️Executando o programa
 
 Para rodar o código, basta instalar os pacotes necessários e executá-lo no Jupyter Notebook ou diretamente no terminal.
 
-- No Jupyter Notebook
+No **Jupyter Notebook**:
 
-1. Abra o Jupyter Notebook executando o seguinte comando no terminal: 
-   jupyter notebook 
+1. Abra o Jupyter Notebook executando o seguinte comando no terminal:
+   ```
+   jupyter notebook
+   ```
 
-2. No jupyter, navegue até o diretório onde está o arquivo oferta demanda.py
+2. No Jupyter, navegue até o diretório onde está o arquivo `oferta_demanda.py`
 
-3. Em uma nova célula do notebook, execute o seguinte comando 
-   %run oferta demanda.py
+3. Em uma nova célula do notebook, execute o seguinte comando:
+   ```
+   %run oferta_demanda.py
+   ```
+
+No **Terminal**:
+
+1. Abra o terminal no diretório onde o arquivo `oferta_demanda. py` se encontra. Em seguida, execute o comando:
+   ```
+   python oferta_demanda.py
+   ```
 
 ## 📊 Saída Esperada
 
@@ -67,6 +81,6 @@ Um gráfico que mostra a evolução da demanda agregada ao longo do tempo.
 
 ## 📊 📁 Estrutura do Projeto
 
-- README.md: Este arquivo, contendo as instruções de uso.
+- `README.md`: Este arquivo, contendo as instruções de uso.
 
-- oferta_demanda.py: O script Python principal para análise e geração dos gráficos.
+- `oferta_demanda.py`: O script Python principal para análise e geração dos gráficos.
