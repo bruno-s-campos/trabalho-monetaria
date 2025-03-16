@@ -9,7 +9,10 @@ library(httr)
 library(readxl)
 library(tidyr)
 
-obter_base_monetaria_excel = function(url) {
+obter_base_monetaria_excel = function() {
+    # Link do Banco Central que contém uma planilha com informações da base monetária
+    url = "https://www.bcb.gov.br/content/indeco/indicadoresselecionados/ies-05.xlsx"
+
     # Criar um arquivo temporário do Excel
     arquivo_base_monetaria_excel = tempfile(fileext = ".xlsx")
 
@@ -44,7 +47,10 @@ obter_base_monetaria_excel = function(url) {
     return(dados)
 }
 
-obter_meio_pagamento_excel = function(url) {
+obter_meio_pagamento_excel = function() {
+    # Link do Banco Central que contém uma planilha com informações do meio de pagamento M1
+    url = "https://www.bcb.gov.br/content/indeco/indicadoresselecionados/ies-09.xlsx"
+
     # Criar um arquivo temporário do Excel
     arquivo_meio_pagamento_excel = tempfile(fileext = ".xlsx")
 
@@ -79,17 +85,11 @@ obter_meio_pagamento_excel = function(url) {
     return(dados)
 }
 
-# Link do Banco Central que contém uma planilha com informações da base monetária
-base_monetaria_url = "https://www.bcb.gov.br/content/indeco/indicadoresselecionados/ies-05.xlsx"
-
 # Dados de base monetária
-base_monetaria_df = obter_base_monetaria_excel(base_monetaria_url)
-
-# Link do Banco Central que contém uma planilha com informações do meio de pagamento M1
-meio_pagamento_url = "https://www.bcb.gov.br/content/indeco/indicadoresselecionados/ies-09.xlsx"
+base_monetaria_df = obter_base_monetaria_excel()
 
 # Dados de meio de pagamento
-meio_pagamento_df = obter_meio_pagamento_excel(meio_pagamento_url)
+meio_pagamento_df = obter_meio_pagamento_excel()
 
 # Combinar os dois dataframes em um único
 multiplicador_df = merge(meio_pagamento_df, base_monetaria_df, by="Data")
