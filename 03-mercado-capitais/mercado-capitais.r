@@ -1,6 +1,6 @@
 # Carregar pacotes necessários
-library(ggplot2)
 library(dplyr)
+library(ggplot2)
 
 # Carregar os dados do arquivo CSV
 dados = read.csv("dados.csv", header=TRUE, sep=";", stringsAsFactors=FALSE)
