@@ -6,7 +6,7 @@ Este diretório contém um script em R para calcular o multiplicador monetário 
 
 - R (versão 3.6.0 ou superior)
 - R Studio Desktop
-- Pacotes do R: "dplyr", "ggplot2", "httr", "readxl", "tidyr"
+- Pacotes do R: "dplyr", "ggplot2", "httr", "readxl", "strucchange", "tidyr"
 
 ## Instalação
 
@@ -16,7 +16,7 @@ Este diretório contém um script em R para calcular o multiplicador monetário 
 
 3. **Instalar os pacotes do R**: abra o R Studio e execute o seguinte comando para instalar os pacotes necessários para a execução do programa.
 ```
-install.packages(c("dplyr", "ggplot2", "httr", "readxl", "tidyr"))
+install.packages(c("dplyr", "ggplot2", "httr", "readxl", "strucchange", "tidyr"))
 ```
 
 Outra forma de instalar os pacotes no R Studio é clicando na aba "Tools" e "Install Packages". Na janela que abrir, escrever o nome dos pacotes e clicar em "Install".
