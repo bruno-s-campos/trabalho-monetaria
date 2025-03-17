@@ -107,9 +107,6 @@ multiplicador_df$K = 1 / (multiplicador_df$C + (multiplicador_df$D * (multiplica
 # Calcular PMPP / DV, para também plotar no gráfico
 multiplicador_df$PMPP_DV = multiplicador_df$PMPP_MEDIA / multiplicador_df$DV_MEDIA
 
-# Data de lançamento oficial do Pix
-lancamento_pix = as.Date("2020-11-16")
-
 # Realizar teste de quebra estrutural, para identificar se teve alguma mudança
 # brusca após o lançamento do Pix.
 
@@ -119,13 +116,21 @@ multiplicador_ts = ts(multiplicador_df$K, start=c(2001, 12), frequency=12)
 # Detectando as quebras na série temporal.
 breakpoints = breakpoints(multiplicador_ts ~ 1)
 
+# Data de lançamento oficial do Pix na série temporal
+lancamento_pix = 2020.9618
+
 # Plotando o multiplicador monetário juntamente com as quebras estruturais
 plot(multiplicador_ts, main="Quebras Estruturais no Multiplicador Monetário\n entre Dezembro de 2001 e Janeiro de 2025",
      xlab="Período", ylab="K")
 lines(fitted(breakpoints), col="red", lwd=2)
+abline(v=lancamento_pix, col="black", lty=2, lwd=1)
 
 # Realizar um teste de significância do modelo
 teste_bp = sctest(multiplicador_ts ~ 1)
 
 # Exibir os resultados do teste
 print(teste_bp)
+
+# Mostrar os períodos que ocorreram as quebras estruturais
+datas_ts = seq(as.Date("2001-12-01"), by="month", length.out=length(multiplicador_ts))
+print(datas_ts[breakpoints$breakpoints])
